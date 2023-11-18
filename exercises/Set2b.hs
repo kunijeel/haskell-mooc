@@ -156,4 +156,6 @@ isPrime n
 --   biggestPrimeAtMost 10 ==> 7
 
 biggestPrimeAtMost :: Integer -> Integer
-biggestPrimeAtMost = todo
+biggestPrimeAtMost n
+  | isPrime n       = n
+  | not (isPrime n) = biggestPrimeAtMost (n - 1)
