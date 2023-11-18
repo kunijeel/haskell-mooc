@@ -102,7 +102,11 @@ leftpad str n
 -- * you'll probably need a recursive helper function
 
 countdown :: Integer -> String
-countdown = todo
+countdown n = countdown' "Ready! " n
+
+countdown' :: String -> Integer -> String
+countdown' str 0 = str ++ " Liftoff!"
+countdown' str n = countdown' (str ++ show n ++ "... ") (n - 1)
 
 ------------------------------------------------------------------------------
 -- Ex 6: implement the function smallestDivisor that returns the
