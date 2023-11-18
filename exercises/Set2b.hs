@@ -138,7 +138,10 @@ smallestDivisor' n divisor
 -- Ps. 0 and 1 are not prime numbers
 
 isPrime :: Integer -> Bool
-isPrime = todo
+isPrime n
+  | n == 1                 = False
+  | smallestDivisor n == n = True
+  | otherwise              = False 
 
 ------------------------------------------------------------------------------
 -- Ex 8: implement a function biggestPrimeAtMost that returns the
