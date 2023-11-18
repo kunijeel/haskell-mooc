@@ -124,7 +124,12 @@ countdown' str n = countdown' (str ++ show n ++ "... ") (n - 1)
 -- Hint: remember the mod function!
 
 smallestDivisor :: Integer -> Integer
-smallestDivisor = todo
+smallestDivisor n = smallestDivisor' n 2
+
+smallestDivisor' :: Integer -> Integer -> Integer
+smallestDivisor' n divisor
+  | mod n divisor == 0 = divisor
+  | otherwise          = smallestDivisor' n (divisor + 1)
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement a function isPrime that checks if the given number
