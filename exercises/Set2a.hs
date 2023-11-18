@@ -78,7 +78,7 @@ substring i j s = take (j - i) (drop i s)
 --   isPalindrome "AB"       ==>  False
 
 isPalindrome :: String -> Bool
-isPalindrome str = todo
+isPalindrome str = if reverse str == str then True else False
 
 ------------------------------------------------------------------------------
 -- Ex 6: implement the function palindromify that chops a character
