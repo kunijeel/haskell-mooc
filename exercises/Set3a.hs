@@ -28,7 +28,7 @@ import Data.List
 --  maxBy head   [1,2,3] [4,5]  ==>  [4,5]
 
 maxBy :: (a -> Int) -> a -> a -> a
-maxBy measure a b = todo
+maxBy measure x y = if measure x > measure y then x else y
 
 ------------------------------------------------------------------------------
 -- Ex 2: implement the function mapMaybe that takes a function and a
