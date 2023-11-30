@@ -124,8 +124,10 @@ sorted (x : y : xs)
 -- Use pattern matching and recursion (and the list constructors : and [])
 
 sumsOf :: [Int] -> [Int]
-sumsOf xs = todo
-
+sumsOf xs = go 0 xs
+  where go _ []         = []
+        go sum (x : xs) = sum + x : go (sum + x) xs
+        
 ------------------------------------------------------------------------------
 -- Ex 7: implement the function merge that merges two sorted lists of
 -- Ints into a sorted list
