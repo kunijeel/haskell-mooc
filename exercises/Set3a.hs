@@ -206,6 +206,8 @@ joinToLength num xs = [x ++ y | x <- xs, y <- xs, length (x ++ y) == num]
 --   [] +|+ [True]        ==> [True]
 --   [] +|+ []            ==> []
 
+(+|+) :: [a] -> [a] -> [a]
+xs +|+ ys = [x | (x : _) <- [xs, ys]]
 
 ------------------------------------------------------------------------------
 -- Ex 11: remember the lectureParticipants example from Lecture 2? We
