@@ -37,6 +37,11 @@ ChatGPT가 카이사르 암호 프로그램을 이해할 수 있도록 자세히
 
 ChatGPT 활용 코딩의 장점은 빠른속도로 코드를 작성해준다는 점이 있고 단점은 질문안에서 하스켈 프로그래밍이라고 명시했지만 다른 프로그래밍 언어로 설명하는 경우가 있다.
 따라서 ChatGPT가 정확히 인식할 수 있도록 한 질문안에 여러번 언급해주는 부분이 번거로웠다.
+
+ghci> quickCheck prop_Let2IntLowercase 
++++ OK, passed 100 tests.
+ghci> quickCheck prop_Let2IntNonLowercase 
++++ OK, passed 100 tests; 14 discarded.
 -}
 
 {-
@@ -65,6 +70,11 @@ prop_Int2LetInvalid n = (n < 0 || n > 25) ==> int2let n == '?'
 
 ChatGPT 활용 코딩의 장점은 이전의 질문을 모두 기억하고 있다는 것이다. 바로 직전 질문에서 "let2int"를 구현해 달라고 요청했기에 비교적 짧고 간결하게 "int2let" 함수
 구현을 요청했다. 단점은 이전 질문에서 ChatGPT가 만약 잘못 이해한 부분이 있다면 사용자가 직접 이를 지적하고 수정요구를 해야한다는 점이다.
+
+ghci> quickCheck prop_Int2LetValid 
++++ OK, passed 100 tests; 350 discarded.
+ghci> quickCheck prop_Int2LetInvalid 
++++ OK, passed 100 tests; 71 discarded.
 -}
 
 {-
@@ -129,6 +139,23 @@ prop_ShiftExtreme n = forAll asciiLowerChar $ \c ->
 검토하고 완성도 높은 구현을 달성할 수 있도록 도움을 준다고 생각한다.
 
 ChatGPT 활용 코딩의 장점은 이전에 만든 "let2int" 와 "int2let" 함수를 사용해 사용자가 요청하는 함수를 작성해 준다는 점이고 단점은 크게 느끼지 못했다.
+
+ghci> quickCheck prop_ShiftLowercase 
++++ OK, passed 100 tests.
+ghci> quickCheck prop_ShiftNonLowercase 
++++ OK, passed 100 tests; 17 discarded.
+ghci> quickCheck prop_ShiftWrapAround 
++++ OK, passed 100 tests.
+ghci> quickCheck prop_ShiftNegative 
++++ OK, passed 100 tests.
+ghci> quickCheck prop_ShiftRepeated 
++++ OK, passed 100 tests.
+ghci> quickCheck prop_ShiftCancel 
++++ OK, passed 100 tests.
+ghci> quickCheck prop_ShiftZero 
++++ OK, passed 100 tests.
+ghci> quickCheck prop_ShiftExtreme 
++++ OK, passed 100 tests.
 -}
 
 {-
@@ -161,6 +188,11 @@ prop_EncodeNonLowercase n s =
 확인하기에 적절하다고 생각한다.
 
 ChatGPT 활용 코딩의 장점은 "let2int", "int2let", "shift" 함수를 만들면서 쌓인 정보로 사용자에게 더 높은 품질의 답안을 제공한다는 점이고 단점은 느끼지 못했다.
+
+ghci> quickCheck prop_EncodeDecode 
++++ OK, passed 100 tests.
+ghci> quickCheck prop_EncodeNonLowercase 
++++ OK, passed 100 tests; 537 discarded.
 -}
 
 {-
@@ -192,4 +224,9 @@ prop_DecodeNonLowercase n s =
 
 "encode" 함수를 만들어 달라고 요청했을때 ChatGPT에게 요청하지 않았지만 알아서 "decode" 함수를 만들어 주었다. 따라서 ChatGPT 활용 코딩의 장점은 사용자가 
 무엇을 원하는지 알아서 판단하고 필요할 것으로 예상되는 부분을 요청하지 않아도 제공해준다는 것이다. 단점은 느끼지 못했다.
+
+ghci> quickCheck prop_DecodeEncode 
++++ OK, passed 100 tests.
+ghci> quickCheck prop_DecodeNonLowercase 
++++ OK, passed 100 tests; 654 discarded.
 -}
